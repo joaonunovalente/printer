@@ -62,14 +62,14 @@
       min-height: 100vh;
       display: grid;
       place-items: center;
-      padding: 24px;
+      padding: clamp(16px, 3vw, 32px);
       position: relative;
     }
 
     .theme-toggle {
       position: fixed;
-      top: 24px;
-      right: 24px;
+      top: clamp(12px, 2vh, 24px);
+      right: clamp(12px, 2vw, 24px);
       width: 48px;
       height: 48px;
       border-radius: 50%;
@@ -96,7 +96,8 @@
       border: 1px solid var(--line);
       border-radius: 28px;
       box-shadow: var(--shadow);
-      padding: clamp(24px, 4vw, 40px);
+      padding: clamp(20px, 5vw, 48px);
+      overflow: hidden;
     }
 
     .eyebrow {
@@ -126,6 +127,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      min-width: 0;
     }
 
     .card-header .eyebrow {
@@ -152,15 +154,15 @@
     .grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      margin-top: 36px;
+      gap: clamp(18px, 3vw, 28px);
+      margin-top: clamp(28px, 4vw, 40px);
     }
 
     .panel {
       border: 1px solid var(--line);
       border-radius: 22px;
       background: rgba(255, 255, 255, 0.62);
-      padding: 22px;
+      padding: clamp(18px, 3vw, 28px);
     }
 
     :root.dark .panel {
@@ -225,6 +227,8 @@
       text-decoration: none;
       font-weight: 650;
       overflow-wrap: anywhere;
+      min-width: 0;
+      word-break: break-all;
     }
 
     .drive-link a:hover {
@@ -267,6 +271,7 @@
     @media (max-width: 720px) {
       .grid {
         grid-template-columns: 1fr;
+        gap: clamp(16px, 2vw, 20px);
       }
 
       .card {
@@ -281,24 +286,45 @@
       }
 
       .card-header {
-        justify-content: center;
-        /* centraliza eyebrow + botão horizontalmente */
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .card-header .eyebrow {
+        flex: 1;
+        min-width: 0;
+        margin-bottom: 0;
       }
 
       .card-header .theme-toggle {
-        margin-left: 8px;
-        /* pequeno espaço entre texto e ícone */
+        flex-shrink: 0;
       }
 
       .eyebrow {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        word-break: break-word;
       }
 
       .drive-link {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      h1 {
+        margin-top: 16px;
+      }
+
+      .subtitle {
+        margin-top: 14px;
+      }
+
+      .panel h2 {
+        margin-bottom: 20px;
+      }
+
+      li+li {
+        margin-top: 20px;
       }
     }
   </style>
